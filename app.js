@@ -12,3 +12,7 @@ app.Note = Backbone.Model.extend({
     details: 'default details'
    }
 });
+
+app.Notes = Backbone.Collection.extend({
+    model: app.Note
+});
