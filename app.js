@@ -27,3 +27,26 @@ app.NoteView = Backbone.View.extend({
         return this;
     }
 });
+
+app.NotesView = Backbone.View.extend({
+    el: '#notes',
+
+    initialize: function( initialNotes ){
+        this.collection = new app.Notes( initialNotes );
+        this.render();
+    },
+
+    render: function(){
+        this.collection.each(function( item ){
+            this.renderBook( item );
+        }, this);
+    },
+
+    renderBook: function( item ){
+        var noteView = new app.NoteView({
+            model: item
+        });
+
+        this.$el.append( noteView.render().el );
+    }
+});
