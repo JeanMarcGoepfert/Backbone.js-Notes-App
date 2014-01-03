@@ -22,7 +22,9 @@ app.NoteView = Backbone.View.extend({
     template: _.template( $('#note-template').html() ),
 
     events: {
-        'click .delete-note': 'deleteNote'
+        'click .delete-note' : 'deleteNote',
+        'click .edit-note'   : 'editNote',
+        'click .save-note'   : 'saveNote'
     },
 
     render: function(){
@@ -36,6 +38,31 @@ app.NoteView = Backbone.View.extend({
         this.$el.slideUp(100, function(){
             this.remove();
         });
+    },
+
+    editNote: function(){
+        this.$el.addClass('editing');
+        this.$el.find('.form input').focus();
+    },
+
+    saveNote: function(){
+        var updatedValues = {},
+            editFields = this.$el.find('input, textarea');
+
+        editFields.each(function(i, el){
+            if ( $( el ).val() !== '' ) {
+                updatedValues[ el.id ] = $( el ).val();
+            }
+        });
+
+        this.model.set({
+            title: updatedValues.title,
+            details: updatedValues.details
+        });
+
+        this.$el.removeClass('editing');
+
+        this.render();
     }
 });
 

@@ -26,13 +26,22 @@
 
     <script id="note-template" type="text/template">
         <div class="row">
-            <div class="col-md-9">
+            <div class="col-md-9 text">
                 <h4><%= title %></h4>
                 <p><%= details %></p>
             </div>
+            <div class="col-md-9 form">
+                <div class="form-group">
+                    <input type="text" value="<%= title %>" class="form-control" id="title">
+                </div>
+                <div class="form-group">
+                    <textarea rows="2" class="form-control" id="details"><%= details %></textarea>
+                </div>
+            </div>
             <div class="col-md-2 col-md-offset-1">
-                <a href="#" class="btn btn-default  btn-block">Edit Note</a>
-                <a href="#" class="btn btn-danger delete-note btn-block" >Delete Note</a>
+                <a href="#" class="btn btn-default btn-block edit-note">Edit Note</a>
+                <a href="#" class="btn btn-success btn-block save-note">Save Note</a>
+                <a href="#" class="btn btn-danger btn-block delete-note " >Delete Note</a>
             </div>
         </div>
         <hr>
