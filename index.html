@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title>Notes List App</title>
     <link rel="stylesheet" href="bootstrap.css">
+    <link rel="stylesheet" href="custom.css">
 </head>
 <body>
 
@@ -21,6 +22,12 @@
         </form>
         <hr>
     </div>
+
+    <script id="note-template" type="text/template">
+        <h3><%= title %></h3>
+        <hr>
+        <p><%= details %></p>
+    </script>
 
     <script src="jquery.js" ></script>
     <script src="underscore-min.js" ></script>
