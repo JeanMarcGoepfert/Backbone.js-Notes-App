@@ -1,7 +1,7 @@
 var sampleData = [
-    { title: "Learn Backbone", details: "learn backbone they said, it'll be fun they said" },
-    { title: "Build an app", details: "i dunno what as long as it's awesome...facebook for dogs maybe?" },
-    { title: "Profit", details: "Money in the bank!" }
+    { title: "Learn Backbone", details: "Learn backbone they said, it'll be fun they said" },
+    { title: "Build an app", details: "For maximum success, create a social networking app specifically for sharing images of dogs balancing bacon on their noses" },
+    { title: "Profit", details: "I got 99 problems but a dog balancing bacon on it's nose ain't one" }
 ];
 
 var app = app || {};
@@ -96,7 +96,7 @@ app.NotesView = Backbone.View.extend({
     addNote: function( e ){
         e.preventDefault();
         var formData = {},
-            noteFormFields = this.$el.find('input, textarea');
+            noteFormFields = this.$el.find('#note-form input, #note-form textarea');
 
         noteFormFields.each(function( i, el ){
             if( $( el ).val() !== '' ) {
