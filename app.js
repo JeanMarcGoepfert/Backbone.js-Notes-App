@@ -3,3 +3,12 @@ var sampleData = [
     { title: "Build an app", details: "i dunno what as long as it's awesome...facebook for dogs maybe?" },
     { title: "Profit", details: "Money in the bank!" }
 ];
+
+var app = app || {};
+
+app.Note = Backbone.Model.extend({
+   defaults: {
+    title: 'default title',
+    details: 'default details'
+   }
+});
