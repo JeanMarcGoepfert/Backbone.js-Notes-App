@@ -18,15 +18,23 @@
             <div class="form-group">
                 <textarea class="form-control" rows="5" id="details" placeholder="Details"></textarea>
             </div>
-            <button id="add-note" type="button" class="btn btn-primary btn-lg btn-block">Add Note</button>
+            <button id="add-note" type="button" class="btn btn-primary btn-lg btn-block">Create Note</button>
         </form>
         <hr>
         <div class="row" id="notes"></div>
     </div>
 
     <script id="note-template" type="text/template">
-        <h3><%= title %></h3>
-        <p><%= details %></p>
+        <div class="row">
+            <div class="col-md-9">
+                <h4><%= title %></h4>
+                <p><%= details %></p>
+            </div>
+            <div class="col-md-2 col-md-offset-1">
+                <a href="#" class="btn btn-default delete-note  btn-block">Edit Note</a>
+                <a href="#" class="btn btn-danger delete-note btn-block" >Delete Note</a>
+            </div>
+        </div>
         <hr>
     </script>
 
