@@ -1,9 +1,6 @@
 var sampleData = [
     { title: "Learn Backbone", details: "learn backbone they said, it'll be fun they said" },
     { title: "Build an app", details: "i dunno what as long as it's awesome...facebook for dogs maybe?" },
-    { title: "Profit", details: "Money in the bank!" },
-    { title: "Learn Backbone", details: "learn backbone they said, it'll be fun they said" },
-    { title: "Build an app", details: "i dunno what as long as it's awesome...facebook for dogs maybe?" },
     { title: "Profit", details: "Money in the bank!" }
 ];
 
@@ -32,25 +29,44 @@ app.NoteView = Backbone.View.extend({
 });
 
 app.NotesView = Backbone.View.extend({
-    el: '#notes',
+    el: '.container',
+
+    events: {
+        'click #add-note': 'addNote'
+    },
 
     initialize: function( initialNotes ){
         this.collection = new app.Notes( initialNotes );
         this.render();
+        this.listenTo( this.collection, 'add', this.renderNote );
     },
 
     render: function(){
         this.collection.each(function( item ){
-            this.renderBook( item );
+            this.renderNote( item );
         }, this);
     },
 
-    renderBook: function( item ){
+    renderNote: function( item ){
         var noteView = new app.NoteView({
             model: item
         });
 
-        this.$el.append( noteView.render().el );
+        this.$el.find('#notes').append( noteView.render().el );
+    },
+
+    addNote: function( e ){
+        e.preventDefault();
+        var formData = {},
+            noteFormFields = this.$el.find('input, textarea');
+
+        noteFormFields.each(function( i, el ){
+            if( $( el ).val() !== '' ) {
+                formData[ el.id ] = $( el ).val();
+            }
+        });
+
+        this.collection.add( new app.Note( formData ) );
     }
 });
 
