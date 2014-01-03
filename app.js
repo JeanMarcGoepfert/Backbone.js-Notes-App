@@ -1,6 +1,9 @@
 var sampleData = [
     { title: "Learn Backbone", details: "learn backbone they said, it'll be fun they said" },
     { title: "Build an app", details: "i dunno what as long as it's awesome...facebook for dogs maybe?" },
+    { title: "Profit", details: "Money in the bank!" },
+    { title: "Learn Backbone", details: "learn backbone they said, it'll be fun they said" },
+    { title: "Build an app", details: "i dunno what as long as it's awesome...facebook for dogs maybe?" },
     { title: "Profit", details: "Money in the bank!" }
 ];
 
@@ -18,7 +21,7 @@ app.Notes = Backbone.Collection.extend({
 });
 
 app.NoteView = Backbone.View.extend({
-    className: '.col-md-4',
+    className: 'col-md-12 note',
     template: _.template( $('#note-template').html() ),
 
     render: function(){
@@ -50,3 +53,5 @@ app.NotesView = Backbone.View.extend({
         this.$el.append( noteView.render().el );
     }
 });
+
+new app.NotesView( sampleData );
