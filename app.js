@@ -21,10 +21,21 @@ app.NoteView = Backbone.View.extend({
     className: 'col-md-12 note',
     template: _.template( $('#note-template').html() ),
 
+    events: {
+        'click .delete-note': 'deleteNote'
+    },
+
     render: function(){
         this.$el.html( this.template( this.model.toJSON() ) );
 
         return this;
+    },
+
+    deleteNote: function(){
+        this.model.destroy();
+        this.$el.slideUp(100, function(){
+            this.remove();
+        });
     }
 });
 
