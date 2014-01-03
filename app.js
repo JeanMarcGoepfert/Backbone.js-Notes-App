@@ -16,3 +16,14 @@ app.Note = Backbone.Model.extend({
 app.Notes = Backbone.Collection.extend({
     model: app.Note
 });
+
+app.NoteView = Backbone.View.extend({
+    className: '.col-md-4',
+    template: _.template( $('#note-template').html() ),
+
+    render: function(){
+        this.$el.html( this.template( this.model.toJSON() ) );
+
+        return this;
+    }
+});
