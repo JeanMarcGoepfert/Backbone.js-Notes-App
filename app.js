@@ -1,9 +1,3 @@
-var sampleData = [
-    { title: "Learn Backbone", details: "Learn backbone they said, it'll be fun they said" },
-    { title: "Build an app", details: "For maximum success, create a social networking app specifically for sharing images of dogs balancing bacon on their noses" },
-    { title: "Profit", details: "I got 99 problems but a dog balancing bacon on it's nose ain't one" }
-];
-
 var app = app || {};
 
 app.Note = Backbone.Model.extend({
@@ -14,7 +8,9 @@ app.Note = Backbone.Model.extend({
 });
 
 app.Notes = Backbone.Collection.extend({
-    model: app.Note
+    model: app.Note,
+
+    localStorage: new Backbone.LocalStorage('local-storage-notes')
 });
 
 app.NoteView = Backbone.View.extend({
@@ -66,7 +62,7 @@ app.NoteView = Backbone.View.extend({
             }
         });
 
-        this.model.set({
+        this.model.save({
             title: updatedValues.title,
             details: updatedValues.details
         });
@@ -95,8 +91,9 @@ app.NotesView = Backbone.View.extend({
         'click #add-note': 'addNote'
     },
 
-    initialize: function( initialNotes ){
-        this.collection = new app.Notes( initialNotes );
+    initialize: function(){
+        this.collection = new app.Notes();
+        this.collection.fetch();
         this.render();
         this.listenTo( this.collection, 'add', this.renderNote );
     },
@@ -126,8 +123,8 @@ app.NotesView = Backbone.View.extend({
             }
         });
 
-        this.collection.add( new app.Note( formData ) );
+        this.collection.add( new app.Note( formData ) ).save();
     }
 });
 
-new app.NotesView( sampleData );
+new app.NotesView();
