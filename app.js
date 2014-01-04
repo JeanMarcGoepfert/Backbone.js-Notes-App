@@ -33,14 +33,16 @@ app.NoteView = Backbone.View.extend({
         return this;
     },
 
-    deleteNote: function(){
+    deleteNote: function( e ){
+        e.preventDefault();
         this.model.destroy();
         this.$el.slideUp(100, function(){
             this.remove();
         });
     },
 
-    editNote: function(){
+    editNote: function( e ){
+        e.preventDefault();
         this.$el.addClass('editing');
         this.$el.find('.form input').focus();
 
@@ -53,7 +55,8 @@ app.NoteView = Backbone.View.extend({
         this.$el.find('.form input').focus();
     },
 
-    saveNote: function(){
+    saveNote: function( e ){
+        e.preventDefault();
         var updatedValues = {},
             editFields = this.$el.find('input, textarea');
 
