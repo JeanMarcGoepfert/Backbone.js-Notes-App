@@ -1,23 +1,20 @@
 .note .form,
-.note .save-note {
+.note .save-note,
+.editing .text,
+.editing .edit-note {
   display: none;
 }
 
-.editing.note .save-note {
-  margin-top: 0px;
+.editing .form,
+.editing .save-note {
+  display: block;
+}
+
+.editing .save-note {
+  margin-top: 0;
 }
 
 .note .form input {
   font-weight: 500;
   font-size: 18px;
-}
-
-.editing.note .form,
-.editing.note .save-note {
-  display: block;
-}
-
-.editing.note .text,
-.editing.note .edit-note {
-  display: none;
 }

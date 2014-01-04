@@ -43,6 +43,14 @@ app.NoteView = Backbone.View.extend({
     editNote: function(){
         this.$el.addClass('editing');
         this.$el.find('.form input').focus();
+
+        var editNoteView = new app.EditNoteView({
+            model: this.model
+        });
+
+        this.$el.find('.row').prepend( editNoteView.render().el );
+
+        this.$el.find('.form input').focus();
     },
 
     saveNote: function(){
@@ -63,6 +71,17 @@ app.NoteView = Backbone.View.extend({
         this.$el.removeClass('editing');
 
         this.render();
+    }
+});
+
+app.EditNoteView = Backbone.View.extend({
+    className: 'col-md-9 form',
+    template: _.template( $('#edit-note').html() ),
+
+    render: function(){
+        this.$el.html( this.template( this.model.toJSON() ) );
+
+        return this;
     }
 });
 
