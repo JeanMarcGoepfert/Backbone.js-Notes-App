@@ -39,7 +39,11 @@ app.NoteView = Backbone.View.extend({
 
     editNote: function( e ){
         e.preventDefault();
-        this.$el.addClass('editing');
+        
+        this.$el.find('.edit-note').toggleClass('edit-note btn-default save-note btn-success').text('Save Note');
+
+        this.$el.find('.text').remove();
+
         this.$el.find('.form input').focus();
 
         var editNoteView = new app.EditNoteView({
@@ -109,7 +113,7 @@ app.NotesView = Backbone.View.extend({
             model: item
         });
 
-        this.$el.find('#notes').append( noteView.render().el );
+        this.$el.find('#notes').prepend( noteView.render().el );
     },
 
     addNote: function( e ){
