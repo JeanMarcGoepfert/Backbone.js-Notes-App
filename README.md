@@ -1,6 +1,6 @@
 #A Simple Notes App with backbone.js
 
-Just a simple app I made when learning Backbone.
+Just a basic app I made when learning Backbone.
 
 See a working demo [here](http://jeanmarcgoepfert.github.io/Backbone.js-Notes-App/).
 
