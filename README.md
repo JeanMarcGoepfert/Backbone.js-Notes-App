@@ -2,4 +2,6 @@
 
 Just a simple app I made when learning Backbone.
 
-I also wrote a tutorial at http://omgoepfert.com/getting-started-with-backbonejs.
+See a working demo [here](http://jeanmarcgoepfert.github.io/Backbone.js-Notes-App/).
+
+I also wrote a tutorial [here](http://omgoepfert.com/getting-started-with-backbonejs).
