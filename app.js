@@ -66,8 +66,6 @@ app.NoteView = Backbone.View.extend({
             details: updatedValues.details
         });
 
-        this.$el.removeClass('editing');
-
         this.render();
     }
 });
